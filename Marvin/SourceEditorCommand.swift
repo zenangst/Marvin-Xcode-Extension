@@ -165,7 +165,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         selection.start.column += 1
       }
 
-      selection.end.column = currentLine.characters.count - 1
+      selection.end.column = currentLine.characters.count
 
       for character in currentLine.characters.reversed() {
         if !validate(character, inSet: SourceEditorCommand.spaceSet) {
@@ -256,9 +256,6 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     /// Search for end of word
     for character in currentLine[currentSelection.start.column..<currentLine.characters.count].characters {
       if !validate(character, inSet: SourceEditorCommand.validSet) {
-        if currentSelection.start.column != currentSelection.end.column - 1 {
-          currentSelection.end.column -= 1
-        }
         break
       }
       currentSelection.end.column += 1
