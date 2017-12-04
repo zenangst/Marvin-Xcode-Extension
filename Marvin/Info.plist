@@ -42,7 +42,7 @@
 					<key>XCSourceEditorCommandIdentifier</key>
 					<string>$(PRODUCT_BUNDLE_IDENTIFIER).SourceEditorCommand.sortLines</string>
 					<key>XCSourceEditorCommandName</key>
-					<string>Sort lines 1.2</string>
+					<string>Sort lines</string>
 				</dict>
 				<dict>
 					<key>XCSourceEditorCommandClassName</key>
