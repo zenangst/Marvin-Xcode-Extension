@@ -1,11 +1,3 @@
-//
-//  SourceEditorExtension.swift
-//  Marvin
-//
-//  Created by Christoffer Winterkvist on 9/14/16.
-//  Copyright © 2016 zenangst. All rights reserved.
-//
-
 import Foundation
 import XcodeKit
 

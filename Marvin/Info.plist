@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>XPC!</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1</string>
+	<string>1.2</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSMinimumSystemVersion</key>
@@ -42,7 +42,7 @@
 					<key>XCSourceEditorCommandIdentifier</key>
 					<string>$(PRODUCT_BUNDLE_IDENTIFIER).SourceEditorCommand.sortLines</string>
 					<key>XCSourceEditorCommandName</key>
-					<string>Sort lines</string>
+					<string>Sort lines 1.2</string>
 				</dict>
 				<dict>
 					<key>XCSourceEditorCommandClassName</key>
