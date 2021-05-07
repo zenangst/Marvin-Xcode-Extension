@@ -12,6 +12,7 @@ enum MarvinCommand: String {
   case duplicateLine
   case deleteLine
   case moveToEOLandInsertLF
+  case sortLines
 }
 
 extension XCSourceTextPosition : Equatable {}
@@ -157,6 +158,12 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         invocation.buffer.selections.setArray([XCSourceTextRange(start: selection.start, end: selection.end)])
       }
     case .deleteLine:
+        guard let textRange = invocation.buffer.selections.firstObject as? XCSourceTextRange, invocation.buffer.lines.count > 0 else {
+                    completionHandler(nil)
+                    return
+            }
+        let range = Range(uncheckedBounds: (lower: textRange.start.line, upper: min(textRange.end.line + 1, invocation.buffer.lines.count)))
+        invocation.buffer.lines.removeObjects(at: IndexSet(integersIn: range))
       break
     case .duplicateLine:
       var padding = 0
@@ -214,6 +221,12 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
       selection.end = selection.start
 
       invocation.buffer.selections.setArray([XCSourceTextRange(start: selection.start, end: selection.end)])
+      break;
+
+    case .sortLines:
+        let selectionRange = selection.start.line...selection.end.line
+        let sorted = selectionRange.map({ invocation.buffer.lines[$0] as! String }).sorted { $0 < $1 }
+        invocation.buffer.lines.replaceObjects(at: IndexSet(integersIn: selectionRange), with: sorted)
     }
 
     completionHandler(nil)
